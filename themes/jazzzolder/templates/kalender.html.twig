@@ -1,0 +1,77 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set upcoming = page.collection('upcoming').slice(1) %}
+{% set next = page.collection('next') %}
+{% set past = page.collection('past') %}
+
+{% block content %}
+	<div class="md:m-4 lg:grid lg:grid-cols-2 lg:gap-4 xl:container xl:mx-auto xl:grid-cols-3">
+		<div class="p-4 md:bg-riverbed md:rounded-md md:mb-4">
+			{{ page.content|raw }}
+		</div>
+		<div class="xl:col-span-2">
+			<div class="p-4 bg-riverbed md:rounded-md md:mb-4">
+				{% for n in next %}
+					{% set first_image = n.media.images|first %}
+					<div class="md:grid md:grid-cols-3 md:gap-x-4 xl:items-center">
+						<div class="md:col-span-2">
+							<p class="uppercase text-large">Volgend optreden</p>
+							<h2><a class="text-loblolly no-underline" href="{{ n.url|e }}">{{ n.title|e }}</a></h2>
+							<p>{{ n.header.date|date("d/m/Y") }}</p>
+							<a class="btn-primary my-4 inline-block text-center mx-auto" href="{{ n.header.ticketurl }}">Koop tickets</a>
+							<div class="hidden xl:block">
+								<p>{{ n.summary|raw }}</p>
+								<a href="{{ n.url|e }}">Lees meer</a>
+							</div>
+						</div>
+						<div class="max-w-sm mx-auto">
+							<a href="{{ n.url|e }}">{{ first_image.html|raw }}</a>
+						</div>
+					</div>
+					
+					<div class="max-w-prose xl:hidden">
+						<p>{{ n.summary|raw }}</p>
+						<a href="{{ n.url|e }}">Lees meer</a>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="p-4 bg-riverbed md:rounded-md md:mb-4">
+				<h2>Aankomende concerten</h2>
+				<table class="table-auto">
+				  <tbody>
+					{% for p in upcoming %}
+						<tr>
+					  		<td class="mr-2">{{ p.header.date|date("d/m/Y") }}</td>
+					  		<td><a href="{{ p.url|e }}">{{ p.title|e }}</a></td>
+						</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+			</div>
+			
+			<div>
+				{# Render the pagination list #}
+				{% if config.plugins.pagination.enabled and collection.params.pagination %}
+					{% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+				{% endif %}
+			</div>
+			
+			<div class="p-4 bg-riverbed md:rounded-md">
+				<h2>Recent afgelopen concerten</h2>
+				<table class="table-auto">
+				  <tbody>
+					{% for p in past %}
+						<tr>
+					  		<td class="mr-2">{{ p.header.date|date("d/m/Y") }}</td>
+					  		<td><a href="{{ p.url|e }}">{{ p.title|e }}</a></td>
+						</tr>
+					{% endfor %}
+				  </tbody>
+				</table>
+				<div>
+					<a href="/archief">Meer…</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set collection = page.collection() %}
+
+{% block content %}
+	<div class="md:m-4 lg:grid lg:grid-cols-2 lg:gap-4 xl:container xl:mx-auto xl:grid-cols-3">
+		<div class="p-4 md:bg-riverbed md:rounded-md md:mb-4">
+			{{ page.content|raw }}
+		</div>
+		<div class="xl:col-span-2">
+			{% for p in collection %}
+					<hr class="md:hidden" />
+				<div class="p-4 md:bg-riverbed md:mb-4 md:rounded-md">
+					<h2 class="pb-1"><a href="{{ p.url|e }}">{{ p.title|e }}</a></h2>
+					<p class="text-xs">door <span class="italic">{{ p.header.author|e}}</span>, op <span class="italic">{{ p.header.date|date("d/m/Y H:i") }}</span></p>
+					<div class="pt-2 max-w-prose">{{ p.content|raw }}</div>
+				</div>
+			{% endfor %}
+			
+			<div>
+				{# Render the pagination list #}
+				{% if config.plugins.pagination.enabled and collection.params.pagination %}
+					{% include 'partials/pagination.html.twig' with {'base_url':page.url, 'pagination':collection.params.pagination} %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

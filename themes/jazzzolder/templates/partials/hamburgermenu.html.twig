@@ -1,0 +1,35 @@
+<div class="sm:hidden text-riverbed" x-data="{showMenu : false}">
+    <div class="bg-loblolly flex flex-row justify-between items-center border-b border-gray-700">
+        <button @click.prevent="showMenu = !showMenu " class="px-2 py-4 flex justify-between bg-loblolly text-riverbed">
+            <svg x-show="!showMenu" class="w-6 h-6 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" stroke="currentColor">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg x-show="showMenu" class="w-6 h-6 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" stroke="currentColor">
+                <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+            Menu
+        </button>
+        <div class="p-4 text-riverbed">
+            <span class="text-2xl font-display font-bold">{{ config.site.title|e }}</span>&nbsp;<span>{{ grav.theme.config.subtitle|e }}</span>
+        </div>
+    </div>
+    <div class="bg-loblolly text-riverbed" x-show="showMenu">
+        <nav class="flex flex-col">
+            {% for page in pages.children.visible %}
+                <a href="{{ page.url|e }}" class="no-underline px-2 py-4 text-riverbed bg-loblolly flex justify-between w-full border-b border-riverbed hover:text-loblolly hover:bg-riverbed">
+                    {{ page.menu|e }}
+                    <svg class="w-6 h-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" stroke="currentColor">
+                        <path d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            {% endfor %}
+
+        </nav>
+    </div>
+    <div class="w-full flex flex-row justify-center mt-4">
+        {% include 'partials/logo.html.twig' %}
+    </div>
+</div>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+

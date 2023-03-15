@@ -1,0 +1,61 @@
+name: Jazzzolder
+slug: jazzzolder
+type: theme
+version: 0.1.0
+description: Theme of the jazzzolder.be website.
+icon: rebel
+author:
+  name: Wim Verhavert
+  email: wim.verhavert@gmail.com
+homepage: https://github.com/4004049/grav-theme-jazzzolder
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/4004049/grav-theme-jazzzolder/issues
+readme: https://github.com/4004049/grav-theme-jazzzolder/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: ">=1.6.0" }
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+      type: toggle
+      label: Dropdown in Menu
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    production:
+      type: toggle
+      label: Production Mode
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    custom_logo:
+      type: file
+      label: Custom Logo
+      size: large
+      destination: "theme://images/logo"
+      multiple: false
+      markdown: true
+      description: Will be used instead of default logo `theme://images/grav-logo.svg`
+      accept:
+        - image/*
+
+    custom_logo_mobile:
+      type: file
+      label: Mobile Custom Logo
+      size: large
+      destination: "theme://images/logo"
+      multiple: false
+      accept:
+        - image/*

@@ -1,0 +1,61 @@
+{% set extension = config.theme.production ? '.min' : '' %}
+<!DOCTYPE html>
+<html lang="{{ (grav.language.getActive ?: grav.config.site.default_lang)|e }}">
+    <head>
+        {% block head %}
+            <meta charset="utf-8"/>
+            <title>
+                {% if header.title %}
+                    {{ header.title|e }}
+                    |
+                {% endif %}
+                {{ site.title|e }}</title>
+
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            {% include 'partials/metadata.html.twig' %}
+
+            <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png')|e }}"/>
+            <link rel="canonical" href="{{ page.url(true, true)|e }}"/>
+        {% endblock head %}
+
+        {% block stylesheets %}
+            {% do assets.addCss('theme://dist/css/app' ~ extension ~ '.css', 98) %}
+            {% do assets.addCss('theme://dist/css/site.css', 97) %}
+            {% do assets.addCss('theme://dist/css/site.min.css', 96) %}
+        {% endblock %}
+
+        {% block javascripts %}{% endblock %}
+
+        {% block fonts %}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+        {% endblock %}
+
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
+        {% endblock %}
+    </head>
+    <body id="top" class="pb-8 bg-riverbed md:bg-white {{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
+
+        {% block header %}
+            {% include 'partials/largemenu.html.twig' %}
+            {% include 'partials/hamburgermenu.html.twig' %}
+        {% endblock %}
+
+        {% block body %}
+            <section id="body" class="p-4 md:m-4 md:rounded-md xl:container xl:mx-auto mb-[100px]">
+                {% block content %}{% endblock %}
+            </section>
+        {% endblock %}
+
+        {% block footer %}{% endblock %}
+
+        {% block bottom %}
+            {{ assets.js('bottom')|raw }}
+        {% endblock %}
+
+    </body>
+</html>

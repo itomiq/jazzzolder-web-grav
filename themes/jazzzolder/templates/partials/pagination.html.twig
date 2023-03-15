@@ -1,0 +1,34 @@
+{% set pagination = pagination|default(page.collection.params.pagination) %}
+{% set base_url = base_url|default(page.url) %}
+
+{% if pagination|length > 1 %}
+
+<ul class="list-none mb-4 block flex flex-row gap-2 justify-center">
+    {% if pagination.hasPrev %}
+        {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+        <li class="inline-block bg-riverbed py-2 px-4 rounded-sm border-none"><a rel="prev" href="{{ url }}">&laquo;</a></li>
+    {% else %}
+        <li class="inline-block bg-riverbed py-2 px-4 rounded-sm border-none"><span>&laquo;</span></li>
+    {% endif %}
+
+    {% for paginate in pagination %}
+
+        {% if paginate.isCurrent %}
+            <li class="inline-block py-2 px-4 rounded-sm bg-riverbed"><span class="active">{{ paginate.number }}</span></li>
+        {% elseif paginate.isInDelta %}
+            {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+            <li class="inline-block py-2 px-4 rounded-sm bg-riverbed"><a href="{{ url }}">{{ paginate.number }}</a></li>
+        {% elseif paginate.isDeltaBorder %}
+            <li class="inline-block py-2 px-4 rounded-sm bg-riverbed"><span>&hellip;</span></li>
+        {% endif %}
+
+    {% endfor %}
+    {% if pagination.hasNext %}
+        {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+        <li class="inline-block py-2 px-4 rounded-sm bg-riverbed"><a rel="next" href="{{ url }}">&raquo;</a></li>
+    {% else %}
+        <li class="inline-block py-2 px-4 rounded-sm bg-riverbed"><span>&raquo;</span></li>
+    {% endif %}
+</ul>
+
+{% endif %}

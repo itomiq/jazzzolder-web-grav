@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %}
+
+
+
+{% block content %}
+
+	<div class="md:m-4 lg:grid lg:grid-cols-3 lg:gap-4 xl:container xl:mx-auto">
+		<div class="p-4 md:bg-riverbed md:rounded-md">
+			{{ page.content|raw }}
+		</div>
+		{% set currentyear = date() %}
+		{% for zolderyear in range(currentyear|date("Y"), 2003, -1) %}
+		<div class="p-4 bg-riverbed md:mt-4 lg:mt-0 md:rounded-md">
+
+				<h2>{{ zolderyear }}</h2>
+				{% set nextyear = zolderyear + 1 %}
+				{% set options = { items: {'@page.children': '/kalender'}, 'order': {'by': 'date', 'dir': 'desc'}, 'dateRange': {'start': '1/1/'~ zolderyear, 'end':'1/1/'~ nextyear}} %}
+				{% set concerts = page.collection(options) %}
+
+				<table class="table-auto">
+			  	<tbody>
+					{% for c in concerts %}
+						<tr>
+				  			<td class="mr-2">{{ c.header.date|date("d/m/Y") }}</td>
+				  			<td><a href="{{ c.url|e }}">{{ c.title|e }}</a></td>
+						</tr>
+					{% endfor %}
+			  	</tbody>
+				</table>
+
+		</div>
+		{% endfor %}
+			
+
+	</div>
+{% endblock %}

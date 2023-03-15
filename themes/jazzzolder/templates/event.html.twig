@@ -1,0 +1,101 @@
+{% extends 'partials/base.html.twig' %}
+{% set first_image = page.media.images|first %}
+
+{% block content %}
+    <div class="p-4 md:bg-riverbed md:rounded-md md:m-4 xl:container xl:mx-auto">
+        <div class="md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+            <div class="max-w-sm mx-auto md:mt-4">
+                <a href="{{ n.url|e }}">{{ first_image.html|raw }}</a>
+                {% if page.header.artists %}
+                <div class="hidden md:block">
+                    <h3>Met</h3>
+                    {% for a in page.header.artists %}
+                    <div class="pl-8 mb-1">
+                        <div class="inline-block -ml-4"><b>{{ a.name}}</b>:</div>
+                        <div class="inline-block">{{ a.instrument }}</div>
+                        {% if a.remark %}
+                        <div class="inline-block">({{ a.remark }})</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="max-w-prose lg:col-span-2">
+                <h3>{{ date(page.header.date) < date('yesterday') ? 'ARCHIEF - ' }}{{ page.header.date|date("d/m/Y") }}</h3>
+                <h2>{{ page.title|e }}</h2>
+                {{ page.content|raw }}
+            </div>
+        </div>
+        {% if page.header.artists %}
+        <div class="md:hidden">
+            <h3>Met</h3>
+            {% for a in page.header.artists %}
+            <div class="pl-8 mb-1">
+                <div class="inline-block -ml-4"><b>{{ a.name}}</b>:</div>
+                <div class="inline-block">{{ a.instrument }}</div>
+                {% if a.remark %}
+                <div class="inline-block">({{ a.remark }})</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if (date(page.header.date) > date('today')) or (date(page.header.date) == date('today'))  %}
+        <div class="md:py-4">
+            <h3>{{ page.header.starttime_set2 ? 'Tijdstippen' : 'Tijdstip' }}</h3>
+            <p class="ml-4"><b>Datum</b>: {{ page.header.date|date("d/m/Y") }}</p>
+            {% if page.header.starttime_set3 %}
+                <p class="ml-4">Dit optreden is opgesplitst in 3 'sets'. Je kan kiezen welke van de drie je wil bijwonen.</p>
+            {% elseif page.header.starttime_set2 %}
+                <p class="ml-4">Dit optreden is opgesplitst in 2 'sets'. Je kan kiezen welke van de twee je wil bijwonen.</p>
+            {% endif %}
+            <div class="md:flex md:flex-row md:gap-8 ml-4">
+                <div>
+                    {% if page.header.starttime_set2 %}
+                    <h3>Set 1</h3>
+                    {% endif %}
+                    <ul class="list-none">
+                        {% if page.header.doors %}
+                        <li class="bold">Deuren: {{ page.header.doors }}</li>
+                        {% endif %}
+                        <li class="bold">Begin: {{ page.header.starttime }}</li>
+                    </ul>
+                </div>
+                {% if page.header.starttime_set2 %}
+                <div>
+                    <h3>Set 2</h3>
+                    <ul class="list-none">
+                        {% if page.header.doors_set2 %}
+                        <li class="bold">Deuren: {{ page.header.doors_set2 }}</li>
+                        {% endif %}
+                        <li class="bold">Begin: {{ page.header.starttime_set2 }}</li>
+                    </ul>
+                </div>
+                {% endif %}
+                {% if page.header.starttime_set3 %}
+                <div>
+                    <h3>Set 3</h3>
+                    <ul class="list-none">
+                        {% if page.header.doors_set3 %}
+                        <li class="bold">Deuren: {{ page.header.doors_set3 }}</li>
+                        {% endif %}
+                        <li class="bold">Begin: {{ page.header.starttime_set3 }}</li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="md:py-4">
+            <h3>Locatie</h3>
+            <p class="ml-4">{{ page.header.location }}</p>
+        </div>
+        {% if page.header.ticketurl %}
+        <div>
+            <a class="btn-primary my-4 inline-block text-center mx-auto" href="{{ page.header.ticketurl }}">Tickets</a>
+        </div>
+        {% endif %}
+        {% endif %}
+        
+    </div>
+{% endblock %}

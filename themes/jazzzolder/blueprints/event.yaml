@@ -1,0 +1,152 @@
+title: Event
+
+form:
+  validation: loose
+
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        event:
+          type: tab
+          title: Event
+
+          fields:
+            xss_check:
+              type: xss
+
+            header.date:
+              type: datetime
+              style: vertical
+              label: Event Date
+              help: "Use the date of when the event takes place, not the date when you create this page."
+              data-default@: '\Grav\Common\Utils::dateNow'
+              format: "d-m-Y"
+              validate:
+                required: true
+                type: datetime
+                message: "Not a valid event date."
+
+            header.title:
+              type: text
+              autofocus: true
+              style: vertical
+              label: "Event Title"
+              help: "Used in links and lists as well on detail pages. Example: for a live concert: put the name of the band here."
+              validate:
+                required: True
+
+            set1:
+              type: columns
+              fields:
+                header.starttime:
+                  type: time
+                  style: vertical
+                  label: "Start Time"
+                  help: "For example: when will the band start playing? Not the time when the doors open."
+                  config-default@: site.events.starttime
+                  format: "H:i"
+                  validate:
+                    required: true
+
+                header.doors:
+                  type: time
+                  style: vertical
+                  label: "Doors"
+                  help: "The time when the audience can join the event. Leave blank if not applicable."
+                  config-default@: site.events.doors
+                  validate:
+                    required: false
+
+            set2:
+              type: columns
+              fields:
+                header.starttime_set2:
+                  type: time
+                  style: vertical
+                  label: "Start time (set 2)"
+                  # format: "H:i"
+                  config-default@: site.events.starttime_set2
+                  toggleable: True
+                header.doors_set2:
+                  type: time
+                  style: vertical
+                  label: "Doors (set 2)"
+                  help: "The time when the audience can join the event."
+                  config-default@: site.events.doors_set2
+                  # format: "H:i"
+                  toggleable: True
+
+            set3:
+              type: columns
+              fields:
+                header.starttime_set3:
+                  type: time
+                  style: vertical
+                  label: "Start time (set 3)"
+                  # format: "H:i"
+                  config-default@: site.events.starttime_set3
+                  toggleable: True
+
+                header.doors_set3:
+                  type: time
+                  style: vertical
+                  label: "Doors (set 3)"
+                  help: "The time when the audience can join the event."
+                  config-default@: site.events.doors_set3
+                  # format: "H:i"
+                  toggleable: True
+
+            header.location:
+              type: text
+              style: vertical
+              label: "Event Location"
+              config-default@: site.events.location
+              validate:
+                required: true
+
+            header.ticketurl:
+              type: url
+              style: vertical
+              label: "Tickets (URL)"
+              help: "Link to the webshop or info-site where you can get tickets for this event."
+              config-default@: site.ticketshop.url
+              toggleable: True
+              enabled: true
+
+        content:
+          type: tab
+          title: Content
+
+          fields:
+            xss_check:
+              type: xss
+
+            columns:
+              type: columns
+              fields:
+                header.artists:
+                  type: list
+                  label: Uitvoerders
+                  style: vertical
+                  fields:
+                    .name:
+                      type: text
+                      label: Name
+                    .instrument:
+                      type: text
+                      label: Instrument
+                    .remark:
+                      type: text
+                      label: Remark
+                      toggleable: true
+                header.media_order:
+                  type: pagemedia
+                  label: PLUGIN_ADMIN.PAGE_MEDIA
+
+            content:
+              type: markdown
+              validate:
+                type: textarea

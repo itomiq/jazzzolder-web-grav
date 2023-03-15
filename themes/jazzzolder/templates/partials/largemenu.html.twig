@@ -1,0 +1,22 @@
+{# <div class="hidden m-4 mb-0 flex sm:block sm:border-b sm:border-gray-500 md:p-4 xl:container xl:mx-auto"> #}
+<div class="hidden sm:block">
+<div class="m-4 flex flex-row justify-between content-center xl:container xl:mx-auto">
+        <div class="">
+            <a href="{{ home_url }}">
+                <img src="{{ url('theme://images/logo/logo-jazzzolder-black.svg') }}" alt="{{ site.title }}" class="w-32"/>
+            </a>
+        </div>
+        <div class="flex flex-col justify-center">
+            <nav class="text-black uppercase">
+                <ul class="flex flex-row gap-4 list-none">
+                    {% include 'partials/navigation.html.twig' %}
+                </ul>
+            </nav>            
+        </div>
+
+</div>
+</div>
+{# <div class="flex">
+    <div class="bg-riverbed">1</div>
+    <div class="bg-riverbed">2</div>
+</div> #}

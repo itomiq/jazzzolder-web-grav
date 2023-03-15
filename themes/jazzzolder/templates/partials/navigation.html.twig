@@ -1,0 +1,9 @@
+{% for page in pages.children.visible %}
+    {% if (page.active or page.activeChild) %}
+        <li class="font-bold">
+    {% else %}
+            <li class="hover:text-white">
+    {% endif %}
+    <a href="{{ page.url|e }}" class="no-underline">{{ page.menu|e }}</a>
+    </li>
+{% endfor %}
