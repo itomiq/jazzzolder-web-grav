@@ -11,8 +11,8 @@ content:
     dir: asc
     custom:
       - _introductie
-      - _contacts
-      - _plan
-      - _nieuwsbrief
       - _openingsuren
+      - _nextconcert
+      - _nieuwsbrief
+      - _plan
 ---

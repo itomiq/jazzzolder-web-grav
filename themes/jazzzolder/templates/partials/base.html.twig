@@ -31,6 +31,7 @@
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Glory:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-4,400;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
         {% endblock %}
 
         {% block assets deferred %}
@@ -38,7 +39,7 @@
             {{ assets.js()|raw }}
         {% endblock %}
     </head>
-    <body id="top" class="pb-8 bg-riverbed md:bg-white {{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
+    <body id="top" class="pb-8 bg-white {{ page.header.body_classes|e }} {{ config.theme.production ?: 'debug-screens' }}">
 
         {% block header %}
             {% include 'partials/largemenu.html.twig' %}

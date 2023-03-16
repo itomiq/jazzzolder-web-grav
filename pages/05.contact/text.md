@@ -1,8 +1,9 @@
 ---
 title: Contacts
+class: "bg-black text-white"
 ---
 
-## Contact
+# Contact
 
 **Administratie**
 

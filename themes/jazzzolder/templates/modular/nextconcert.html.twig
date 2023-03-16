@@ -1,0 +1,15 @@
+{% set upcoming = page.collection('upcoming').slice(1) %}
+
+<section class="w-full p-4 md:border md:border-black lg:p-5 xl:p-7 {{ page.header.class}}">
+    <h1>Volgende concert</h1>
+    <table class="table-auto">
+      <tbody>
+        {% for p in upcoming %}
+            <tr>
+                  <td class="mr-2">{{ p.header.date|date("d/m/Y") }}</td>
+                  <td><a href="{{ p.url|e }}">{{ p.title|e }}</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</section>

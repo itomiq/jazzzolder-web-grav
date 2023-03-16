@@ -4,11 +4,15 @@
 
 @layer base {
   html {
-    @apply text-loblolly;
+    @apply text-black leading-6 subpixel-antialiased tracking-tight;
   }
 
   p {
-    @apply mb-2;
+    @apply pb-4;
+  }
+
+  h1 {
+    @apply text-3xl font-display font-black uppercase pb-4;
   }
 
   h2 {

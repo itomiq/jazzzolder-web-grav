@@ -1,14 +1,15 @@
 ---
 title: Openingsuren
+class: "bg-black text-white"
 ---
 
-## Openingsuren en adres
+# Openingsuren
 
 de jazzzolder vzw is open:
 
 - elke 2de en 4de vrijdag van de maand,
-- van 20 uur tot 24 uur.
-- het live-optreden begint **om 20u30 stipt!**
+- van 19 uur tot 24 uur.
+- het live-optreden begint **om 19u30 stipt!**
 
 Tickets via: [webshop jazzzolder](https://ticketshop.ticketmatic.com/mechelen/jazzzolder)
 
@@ -16,7 +17,7 @@ Tickets via: [webshop jazzzolder](https://ticketshop.ticketmatic.com/mechelen/ja
 - -26: 10 euro.
 - jaarlidkaarten (10 maanden): 180 euro (overschrijven op BE49 7330 3396 3871)
 
-### Adres
+# Adres
 
 Het Predikheren, Goswin De Stassartstraat 88 te Mechelen.
 
