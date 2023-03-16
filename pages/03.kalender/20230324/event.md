@@ -20,6 +20,7 @@ artists:
     -
         name: 'Oscar Georges '
         instrument: Drums
+media_order: 'Nicolas Thys.JPG'
 ---
 
 Met zijn nieuw project neemt Pascal ons mee in de wereld van zijn eigen composities. Een fusie tussen urban muziek en een meer kleurrijke jazz geeft een heel bijzondere frisheid aan een kwartet dat individualiteit en perfecte harmonie, ritmes en zangmelodieën combineert.
