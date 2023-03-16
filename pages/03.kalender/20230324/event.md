@@ -3,8 +3,8 @@ title: Ixusproject
 date: 24-03-2023
 starttime: '19:30'
 doors: '19:00'
-starttime_set2: '21:30'
-doors_set2: '21:00'
+starttime_set2: '21:15'
+doors_set2: '20:45'
 location: 'Zaal Mandela, Het Predikheren'
 ticketurl: 'https://ticketshop.ticketmatic.com/mechelen/jazzzolder'
 artists:
