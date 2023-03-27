@@ -1,6 +1,6 @@
 ---
 title: Ixusproject
-date: 24-03-2023
+date: 24-03-2024
 starttime: '19:30'
 doors: '19:00'
 starttime_set2: '21:15'

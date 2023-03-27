@@ -554,11 +554,8 @@ html {
   -moz-osx-font-smoothing: auto;
 }
 
-p {
-  padding-bottom: 1rem;
-}
-
 h1 {
+  padding-top: 1rem;
   padding-bottom: 1rem;
   font-family: Inter;
   font-size: 1.875rem;
@@ -584,12 +581,17 @@ h3 {
   font-weight: 700;
 }
 
+p {
+  margin-bottom: 0.75rem;
+}
+
 a {
   text-decoration-line: underline;
 }
 
 ul {
-  list-style-position: inside;
+  margin-left: 1rem;
+  list-style-position: outside;
   list-style-type: disc;
 }
 
@@ -846,10 +848,6 @@ ul {
   margin-top: 1rem;
 }
 
-.mt-8 {
-  margin-top: 2rem;
-}
-
 .block {
   display: block;
 }
@@ -1086,10 +1084,6 @@ ul {
   text-decoration-line: none;
 }
 
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
 @media (min-width: 1280px) {
 
   .xl\:container {
@@ -1308,17 +1302,9 @@ ul {
     grid-column: span 3 / span 3;
   }
 
-  .xl\:m-0 {
-    margin: 0px;
-  }
-
   .xl\:mx-auto {
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .xl\:mt-4 {
-    margin-top: 1rem;
   }
 
   .xl\:block {
@@ -1331,10 +1317,6 @@ ul {
 
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .xl\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:items-center {

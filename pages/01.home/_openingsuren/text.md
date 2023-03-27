@@ -1,9 +1,6 @@
 ---
 title: Openingsuren
-class: "bg-black text-white"
 ---
-
-# Openingsuren
 
 de jazzzolder vzw is open:
 

@@ -7,12 +7,8 @@
     @apply text-black leading-6 subpixel-antialiased tracking-tight;
   }
 
-  p {
-    @apply pb-4;
-  }
-
   h1 {
-    @apply text-3xl font-display font-black uppercase pb-4;
+    @apply text-3xl font-display font-black uppercase py-4;
   }
 
   h2 {
@@ -23,12 +19,16 @@
     @apply text-lg font-display font-bold my-4;
   }
 
+  p {
+    @apply mb-3;
+  }
+
   a {
     @apply underline;
   }
 
   ul {
-    @apply list-disc list-inside;
+    @apply list-disc list-outside ml-4;
   }
 }
 
