@@ -51,7 +51,12 @@
     {% endfor %}
 {% endblock %}
 
+{% set pgWelcome = page.find('/home/_introductie') %}
 {% block body %}
+    <div class="p-4">
+        <h1 class="text-center mt-8">{{ pgWelcome.title }}</h1>
+        {{ pgWelcome.content|raw }}
+    </div>
     <div class="mb-4 xl:container xl:mx-auto">
       <div class="md:grid md:grid-cols-2 md:gap-4 md:m-4 lg:grid-cols-3 xl:grid-cols-4 xl:m-0 xl:mt-4">
         {% for module in page.collection() if module.template != 'modular/hero' %}  

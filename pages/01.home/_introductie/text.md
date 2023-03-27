@@ -1,9 +1,7 @@
 ---
-title: Introductie
-class: "md:col-span-2 md:border-solid md:border md:border-black xl:col-span-3"
+title: Welkom
+class: 'md:col-span-2 md:border-solid md:border md:border-black xl:col-span-3'
 ---
-
-# Welkom
 
 Sinds 1998 organiseert Jazzzolder elke 2de en 4de vrijdag van de maand concerten in Mechelen. Na wat omzwervingen, vind je Jazzzolder nu in zaal Mandela van de tweede mooiste bibliotheek ter wereld: [Het Predikheren](https://hetpredikheren.mechelen.be/).
 
